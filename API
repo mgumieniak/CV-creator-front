@@ -1,0 +1,10 @@
+resource:
+* cv
+* user
+
+
+GET/POST/PUT/DELETE cv
+* return CV for specific user: /api/users/{user}/cvs/{cv}
+
+GET/POST/PUT/DELETE user
+* return CV for specific user: /api/users/{user}
