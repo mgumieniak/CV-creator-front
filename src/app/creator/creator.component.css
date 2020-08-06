@@ -1,3 +1,16 @@
-mat-grid-tile {
+.layout{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-columns: auto auto;
+
+  grid-gap: 10px;
+  padding: 10px;
   background: lightblue;
+}
+
+
+.layout__element{
+  display: grid;
+  place-items: center;
+  background: green;
 }
