@@ -6,9 +6,10 @@ import { CreatorComponent } from "./creator.component";
 import { FormComponent } from "./form/form.component";
 import { PreviewComponent } from "./preview/preview.component";
 import { MaterialModule } from "../MaterialModule";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CreatorComponent, FormComponent, PreviewComponent],
-  imports: [CommonModule, CreatorRoutingModule, MaterialModule],
+  imports: [CommonModule, CreatorRoutingModule, MaterialModule,ReactiveFormsModule],
 })
 export class CreatorModule {}
