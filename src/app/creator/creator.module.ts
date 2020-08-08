@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { CreatorRoutingModule } from "./creator-routing.module";
-import { CreatorComponent } from "./creator.component";
+import { CreatorComponent } from "./creator.container";
 import { FormComponent } from "./form/form.component";
 import { PreviewComponent } from "./preview/preview.component";
 import { MaterialModule } from "../MaterialModule";

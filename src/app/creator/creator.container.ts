@@ -5,8 +5,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-creator',
-  templateUrl: './creator.component.html',
-  styleUrls: ['./creator.component.css']
+  templateUrl: './creator.container.html',
+  styleUrls: ['./creator.container.css']
 })
 export class CreatorComponent implements OnInit {
 

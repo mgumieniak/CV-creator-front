@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreatorComponent } from './creator.component';
+import { CreatorComponent } from './creator.container';
 
 const routes: Routes = [{ path: '', component: CreatorComponent }];
 
