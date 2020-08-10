@@ -9,5 +9,6 @@
     [cv]="cv$ | async"
     (update)="update($event)"
   ></app-form>
-  <app-preview class="layout__element">2</app-preview>
+  <app-preview class="layout__element"
+    [cv]="cv$ | async"></app-preview>
 </div>

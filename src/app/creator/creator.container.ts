@@ -26,7 +26,6 @@ export class CreatorComponent {
   constructor(private restClient: RestClientService) {}
 
   update(cv: CV): void {
-    console.log("update")
     this.restClient.update(cv).subscribe({
       next: (cv) => this.cvUpdate.next(cv),
       error: noop,

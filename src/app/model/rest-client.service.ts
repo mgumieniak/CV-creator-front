@@ -4,10 +4,8 @@ import { environment } from "src/environments/environment";
 import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 import { CV } from './data';
+import { classToPlain } from 'class-transformer';
 
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" }),
-};
 
 @Injectable({
   providedIn: "root",
@@ -27,14 +25,14 @@ export class RestClientService {
     return this.http
       .get<any>(this.baseUrl + `/cvs/1`)
       .pipe(
-        map((data) => Object.assign(new CV, data)),
+        // map((data) => Object.assign(CV, data)),
         tap((data) => console.log(data)),
         catchError(this.handleError("getCV")))
   }
 
   update(cv : CV): Observable<CV> {
     return this.http
-      .put(this.baseUrl + `/cvs/1`,cv,httpOptions)
+      .put<CV>(this.baseUrl + "/cvs/1",classToPlain(cv))
       .pipe(
         tap((data) => console.log(data)),
         catchError(this.handleError<any>("Update CV"))

@@ -12,5 +12,5 @@
 .layout__element{
   display: grid;
   place-items: center;
-  background: green;
+  background: rgb(218, 241, 218);
 }
