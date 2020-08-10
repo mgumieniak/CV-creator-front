@@ -7,6 +7,7 @@ import { FormComponent } from "./form/form.component";
 import { PreviewComponent } from "./preview/preview.component";
 import { MaterialModule } from "../MaterialModule";
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModelModule } from '../model/model.module';
 
 @NgModule({
   declarations: [CreatorComponent, FormComponent, PreviewComponent],

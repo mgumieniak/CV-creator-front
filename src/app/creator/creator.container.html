@@ -4,6 +4,10 @@
 </mat-grid-list> -->
 <div class="layout">
   <div class="layout__element">MENU</div>
-  <app-form class="layout__element">1</app-form>
+  <app-form
+    class="layout__element"
+    [cv]="cv$ | async"
+    (update)="update($event)"
+  ></app-form>
   <app-preview class="layout__element">2</app-preview>
 </div>

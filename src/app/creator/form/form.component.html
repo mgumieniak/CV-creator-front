@@ -1,4 +1,6 @@
-<form class="model-form" [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
+<button class="btn btn-primary" (click)="addPosition()">Add cv</button>
+<button class="btn btn-primary" (click)="updateGivenCV()">modify cv</button>
+<!-- <form class="model-form" [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
 
     <label>firstname:</label>
     <input class="form-control" name="firstname" formControlName="firstname">
@@ -30,4 +32,4 @@
     <button class="btn btn-primary" [disabled]="!modelForm.valid" type="submit">Send</button>
   </form>
   
-  <pre>{{ modelForm.value | json }}</pre>
+  <pre>{{ modelForm.value | json }}</pre> -->

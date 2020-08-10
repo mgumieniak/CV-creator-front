@@ -1,45 +1,53 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
+import { CV } from 'src/app/model/data';
 
 @Component({
   selector: "app-form",
   templateUrl: "./form.component.html",
   styleUrls: ["./form.component.css"],
 })
-export class FormComponent implements OnInit {
-  modelForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {}
+export class FormComponent{
+  @Input() cv: CV;
+  @Output() update: EventEmitter<CV> = new EventEmitter();
 
-  ngOnInit() {
-    this.modelForm = this.formBuilder.group({
-      firstname: ['', Validators.required],
-      lastname: ['',[Validators.required, Validators.minLength(3)]],
-      positions: this.formBuilder.array([])
-     });
-  }
+  // modelForm: FormGroup;
+  // constructor(private formBuilder: FormBuilder) {}
 
-  get positions() : FormArray {
-    return <FormArray>this.modelForm.get('positions');
-  }
+  // ngOnInit() {
+  //   this.modelForm = this.formBuilder.group({
+  //     firstname: ['', Validators.required],
+  //     lastname: ['',[Validators.required, Validators.minLength(3)]],
+  //     positions: this.formBuilder.array([])
+  //    });
+  // }
+
+  // get positions() : FormArray {
+  //   return <FormArray>this.modelForm.get('positions');
+  // }
   
-  buildPosition() : FormGroup {
-    return this.formBuilder.group({
-       job: '',
-       company: '',
-       city: ''
-     });
-  }
+  // buildPosition() : FormGroup {
+  //   return this.formBuilder.group({
+  //      job: '',
+  //      company: '',
+  //      city: ''
+  //    });
+  // }
   
   addPosition() : void {
-    this.positions.push(this.buildPosition())
+    console.log(this.cv);
+  }
+
+  updateGivenCV() : void{
+    this.update.emit(new CV());
   }
   
-  removePosition(i) : void {
-    this.positions.removeAt(i);
-  }
+  // removePosition(i) : void {
+  //   this.positions.removeAt(i);
+  // }
   
 
-  onSubmit(form) {
-    console.log(form);
-  }
+  // onSubmit(form) {
+  //   console.log(form);
+  // }
 }
