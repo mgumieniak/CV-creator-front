@@ -21,6 +21,7 @@ export class FormComponent{
       lastname: ['',[Validators.required]],
       positions: this.formBuilder.array([]),
       email: ['', [Validators.required, Validators.email]],
+      phone: ['',[Validators.required]],
      });
   }
 
