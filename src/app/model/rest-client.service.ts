@@ -25,7 +25,6 @@ export class RestClientService {
     return this.http
       .get<any>(this.baseUrl + `/cvs/1`)
       .pipe(
-        // map((data) => Object.assign(CV, data)),
         tap((data) => console.log(data)),
         catchError(this.handleError("getCV")))
   }
