@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CV } from 'src/app/model/data';
 
 @Component({
-  selector: 'app-preview',
+  selector: 'app-preview-ui',
   templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.css']
+  styleUrls: ['./preview.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewComponent {
   @Input() cv : CV;
