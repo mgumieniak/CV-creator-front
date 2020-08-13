@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-//Angular Material Components
 import {MatCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
@@ -36,7 +35,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   imports: [
     MatCheckboxModule,
-    MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -67,8 +65,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSortModule,
     MatPaginatorModule,
   ],
-  exports:[
-    MatCheckboxModule,
+  exports: [
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
@@ -101,4 +98,5 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {
+}

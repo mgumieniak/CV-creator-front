@@ -7,23 +7,29 @@
 >
   <mat-form-field appearance="fill">
     <mat-label>Firstname</mat-label>
-    <input matInput formControlName="firstname" required />
+    <label>
+      <input matInput formControlName="firstname" required />
+    </label>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Lastname</mat-label>
-    <input matInput formControlName="lastname" required />
+    <label>
+      <input matInput formControlName="lastname" required />
+    </label>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input
-      matInput
-      placeholder="pat@example.com"
-      formControlName="email"
-      required
-    />
-    <mat-error *ngIf="isEmailvalid()">{{ getEmailErrorMessage() }}</mat-error>
+    <label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+      />
+    </label>
+    <mat-error *ngIf="isEmailValid()">{{ getEmailErrorMessage() }}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
