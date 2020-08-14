@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
     this.modelForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', [Validators.required]],
-      positions: this.formBuilder.array([]),
+      additionDetails: this.formBuilder.array([]),
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
     });
@@ -30,10 +30,21 @@ export class FormComponent implements OnInit {
 
   buildPosition(): FormGroup {
     return this.formBuilder.group({
-      job: '',
-      company: '',
-      city: ''
+      description: '',
+      property: '',
     });
+  }
+
+  get additionDetails(): FormArray {
+    return this.modelForm.get('additionDetails') as FormArray;
+  }
+
+  addAdditionDetails(): void {
+    this.additionDetails.push(this.buildPosition());
+  }
+
+  removeAdditionDetails(i): void {
+    this.additionDetails.removeAt(i);
   }
 
   getEmailErrorMessage() {
@@ -48,40 +59,9 @@ export class FormComponent implements OnInit {
     return this.modelForm.get('email').invalid;
   }
 
-  get positions(): FormArray {
-    return <FormArray> this.modelForm.get('positions');
-  }
-
-  addPosition(): void {
-    console.dir(this.cv);
-  }
-
-  updateGivenCV(): void {
-    let personalDetails = {
-      name: 'Maciej',
-      surname: 'Gumieniak',
-      photo: '1'
-    };
-    let experience = {
-      company: 'kimerli',
-      position: 'java dev',
-    };
-
-    let updatedCv = new CV();
-    updatedCv.id = '1';
-    updatedCv.experience = new Map(Object.entries(experience));
-    updatedCv.personalDetails = new Map(Object.entries(personalDetails));
-    this.update.emit(updatedCv);
-  }
-
-  removePosition(i): void {
-    this.positions.removeAt(i);
-  }
-
-
-  onSubmit(form) {
+  updateGivenCV(form): void {
     console.log(form);
+    this.update.emit(this.cv);
   }
-
 
 }

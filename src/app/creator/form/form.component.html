@@ -1,79 +1,65 @@
-<button class="btn btn-primary" (click)="updateGivenCV()">modify cv</button>
-
 <form
   class="model-form"
   [formGroup]="modelForm"
-  (ngSubmit)="onSubmit(modelForm)"
+  (ngSubmit)="updateGivenCV(modelForm)"
 >
-  <mat-form-field appearance="fill">
-    <mat-label>Firstname</mat-label>
-    <label>
-      <input matInput formControlName="firstname" required />
-    </label>
-  </mat-form-field>
+  <app-form-field
+    [formGroup]="modelForm"
+    title="Firstname"
+    formName="firstname">
+  </app-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Lastname</mat-label>
-    <label>
-      <input matInput formControlName="lastname" required />
-    </label>
-  </mat-form-field>
+  <app-form-field
+    [formGroup]="modelForm"
+    title="Lastname"
+    formName="lastname">
+  </app-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <label>
-      <input
-        matInput
-        placeholder="pat@example.com"
-        formControlName="email"
-        required
-      />
-    </label>
-    <mat-error *ngIf="isEmailValid()">{{ getEmailErrorMessage() }}</mat-error>
-  </mat-form-field>
+  <app-form-field
+    [formGroup]="modelForm"
+    title="Email"
+    [isValid]="isEmailValid()"
+    formName="email"
+    [errorMsg]="getEmailErrorMessage()">
+  </app-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Phon number</mat-label>
-    <input
-      matInput
-      formControlName="phone"
-      required
-    />
-  </mat-form-field>
+  <app-form-field
+    [formGroup]="modelForm"
+    title="Phon number"
+    formName="phone">
+  </app-form-field>
 
-  <button class="btn btn-primary" (click)="addPosition()">Add position</button>
+  <button mat-stroked-button (click)="addAdditionDetails()">Add property</button>
 
-  <div
-    formArrayName="positions"
-    *ngFor="let pos of positions.controls; let i = index"
-    class="position"
+  <div formArrayName="additionDetails"
+       *ngFor="let pos of additionDetails.controls; let i = index"
   >
-    <h3>Position {{ i + 1 }}</h3>
-    <button class="btn btn-danger" (click)="removePosition(i)">
-      remove (X)
-    </button>
 
-    <fieldset [formGroupName]="i">
-      <label attr.for="{{ 'posId' + i }}" class="col-2 col-form-label"
-        >Job:</label
-      >
-      <input
-        id="{{ 'posId' + i }}"
-        class="form-control"
-        name="job"
-        formControlName="job"
-      />
+    <div [formGroupName]="i">
+      <mat-form-field>
+        <mat-label>Description:</mat-label>
+        <input
+          matInput
+          formControlName="description"
+        />
+      </mat-form-field>
 
-      <label class="col-2 col-form-label">Company:</label>
-      <input class="form-control" name="company" formControlName="company" />
+      <mat-form-field>
+        <mat-label>Property:</mat-label>
+        <input
+          matInput
+          formControlName="property"
+        />
+      </mat-form-field>
 
-      <label class="col-2 col-form-label">City:</label>
-      <input class="form-control" name="city" formControlName="city" />
-    </fieldset>
+      <button mat-icon-button color="warn" (click)="removeAdditionDetails(i)">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
   </div>
 
-  <button class="btn btn-primary" [disabled]="!modelForm.valid" type="submit">
-    Send
+  <button mat-stroked-button [disabled]="!modelForm.valid" type="submit">
+    Save
   </button>
 </form>
 

@@ -5,12 +5,11 @@
 
   grid-gap: 10px;
   padding: 10px;
-  background: lightblue;
+  background: #add8e6;
 }
-
 
 .layout__element{
   display: grid;
   place-items: center;
-  background: rgb(218, 241, 218);
+  background: #fffcfc;
 }
