@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CV } from 'src/app/model/data';
+import { classToPlain } from 'class-transformer';
 
 @Component({
   selector: 'app-preview-ui',
@@ -8,9 +9,12 @@ import { CV } from 'src/app/model/data';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewComponent {
-  @Input() cv : CV;
+  @Input() cv: CV;
 
   constructor() { }
 
+  getCV(){
+    return classToPlain(this.cv);
+  }
 
 }

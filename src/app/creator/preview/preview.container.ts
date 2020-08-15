@@ -9,7 +9,6 @@ import {CvService} from '../cv.service';
   styleUrls: ['./preview.container.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-// tslint:disable-next-line:component-class-suffix
 export class PreviewContainer {
   cv$: Observable<CV> = this.cvService.getCV();
 

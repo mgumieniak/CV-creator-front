@@ -10,9 +10,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FormContainer} from './form/form.container';
 import {PreviewContainer} from './preview/preview.container';
 import {FormFieldComponent} from './form/form-field/form-field.component';
+import { PersonalDetailsComponent } from './form/personal-details/personal-details.component';
+import { PersonalDetailsContainer } from './form/personal-details/personal-details.container';
 
 @NgModule({
-  declarations: [CreatorComponent, FormComponent, PreviewComponent, FormContainer, PreviewContainer, FormFieldComponent],
+  declarations: [CreatorComponent, FormComponent, PreviewComponent, FormContainer, PreviewContainer, FormFieldComponent, PersonalDetailsComponent, PersonalDetailsContainer],
     imports: [CommonModule, CreatorRoutingModule, MaterialModule, ReactiveFormsModule, FormsModule],
 })
 export class CreatorModule {

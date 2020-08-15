@@ -1,1 +1,4 @@
-<app-form-ui [cv]="cv$ | async" (update)="update($event)"> </app-form-ui>
+<div *ngIf="cv$ | async as cv">
+  <app-form-ui [cv]="cv" (update)="update($event)"> </app-form-ui>
+</div>
+

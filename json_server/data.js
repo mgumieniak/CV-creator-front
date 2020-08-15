@@ -3,9 +3,11 @@ module.exports = function () {
     cvs: [{
         id: '1',
         personalDetails: {
-          name: "Maciej",
-          surname: "Gumieniak",
-          photo: "1"
+          firstname: "Maciej",
+          lastname: "Gumieniak",
+          additionDetails: [],
+          email: "maciej.gumieniak@onet.pl",
+          phone: "1",
         },
         experience: {
           company: "ehhh",
