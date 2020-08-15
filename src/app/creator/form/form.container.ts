@@ -11,7 +11,7 @@ import {CvService} from '../cv.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormContainer {
-  cv$: Observable<CV> = this.cvService.getCV();
+  @Input() cv: CV;
 
   constructor(
     private restClient: RestClientService,

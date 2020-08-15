@@ -1,0 +1,7 @@
+{{log("NOT EXECUTE!!!!!!!!!!!!")}}
+<div *ngIf="cv$ | async as cv">
+    {{log("EXECUTE!!!!!!!!!!!!")}}
+  <app-creator-ui
+    [cv]="cv"></app-creator-ui>
+</div>
+

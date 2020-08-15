@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject, Observable} from 'rxjs';
+import {Subject, Observable, AsyncSubject} from 'rxjs';
 import {CV} from '../model/data';
 import {multiScan} from 'rxjs-multi-scan';
 import {RestClientService} from '../model/rest-client.service';
@@ -23,7 +23,7 @@ export class CvService {
   }
 
   public updateGivenCv(cv: CV): void {
-    console.log("Inside update:");
+    console.log('Inside update:');
     console.log(cv);
     this.cvUpdate.next(cv);
   }

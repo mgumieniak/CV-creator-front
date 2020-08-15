@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, Input} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CV} from 'src/app/model/data';
 import {CvService} from '../cv.service';
@@ -10,7 +10,7 @@ import {CvService} from '../cv.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewContainer {
-  cv$: Observable<CV> = this.cvService.getCV();
+  @Input() cv: CV;
 
   constructor(
     private cvService: CvService

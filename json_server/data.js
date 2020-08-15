@@ -5,7 +5,9 @@ module.exports = function () {
         personalDetails: {
           firstname: "Maciej",
           lastname: "Gumieniak",
-          additionDetails: [],
+          additionDetails: {
+            age: 24,
+          },
           email: "maciej.gumieniak@onet.pl",
           phone: "1",
         },

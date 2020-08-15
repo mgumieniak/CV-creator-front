@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {CV} from '../../../model/data';
 import {classToPlain, plainToClass} from 'class-transformer';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-personal-details-ui',
@@ -9,7 +10,7 @@ import {classToPlain, plainToClass} from 'class-transformer';
   styleUrls: ['./personal-details.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PersonalDetailsComponent implements OnInit {
+export class PersonalDetailsComponent implements OnInit, OnDestroy {
   @Input() formGroup: FormGroup;
   @Input() cv: CV;
   @Output() update: EventEmitter<CV> = new EventEmitter<CV>();
@@ -17,12 +18,17 @@ export class PersonalDetailsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
   }
 
+  private valueChangesSub: Subscription;
+
   ngOnInit(): void {
-    this.formGroup.valueChanges.subscribe(() => {
+    this.valueChangesSub = this.formGroup.valueChanges.subscribe(() => {
       this.updateGivenCV(this.formGroup);
     });
   }
 
+  ngOnDestroy(): void {
+    this.valueChangesSub.unsubscribe();
+  }
 
   buildPosition(): FormGroup {
     return this.formBuilder.group({
@@ -56,7 +62,7 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   updateGivenCV(form): void {
-    const updatedCv = <CV>{};
+    const updatedCv = new CV();
     const personalDetails = new Map<string, string>();
     for (const value in form.value) {
       personalDetails.set(value, form.value[value]);

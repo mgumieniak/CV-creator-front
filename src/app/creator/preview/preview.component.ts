@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { CV } from 'src/app/model/data';
-import { classToPlain } from 'class-transformer';
+import {Component, OnInit, Input, ChangeDetectionStrategy} from '@angular/core';
+import {CV} from 'src/app/model/data';
+import {classToPlain} from 'class-transformer';
 
 @Component({
   selector: 'app-preview-ui',
@@ -11,9 +11,10 @@ import { classToPlain } from 'class-transformer';
 export class PreviewComponent {
   @Input() cv: CV;
 
-  constructor() { }
+  constructor() {
+  }
 
-  getCV(){
+  getCV() {
     return classToPlain(this.cv);
   }
 

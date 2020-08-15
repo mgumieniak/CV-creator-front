@@ -32,9 +32,8 @@
   <button mat-stroked-button type="button" (click)="addAdditionDetails()">Add property</button>
 
   <div formArrayName="additionDetails"
-       *ngFor="let pos of additionDetails.controls; let i = index"
+       *ngFor="let _ of additionDetails.controls; let i = index"
   >
-
     <div [formGroupName]="i">
       <mat-form-field>
         <mat-label>Description:</mat-label>

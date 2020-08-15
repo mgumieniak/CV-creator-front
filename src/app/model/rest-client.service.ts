@@ -34,8 +34,9 @@ export class RestClientService {
     return this.http
       .put<CV>(this.baseUrl + '/cvs/1', classToPlain(cv))
       .pipe(
-        tap((data) => {console.log(`Call data: ${data}`)}),
-        catchError(this.handleError<any>('Update CV'))
+        map((data)=> CV.convert(data)),
+        tap((cv) => {console.log('PUT data:');console.log(cv)}),
+        catchError(this.handleError<CV>('Update CV'))
       );
   }
 

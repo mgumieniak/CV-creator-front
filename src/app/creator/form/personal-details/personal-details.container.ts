@@ -12,7 +12,7 @@ import {FormGroup} from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalDetailsContainer {
-  cv$ = this.cvService.getCV();
+  @Input() cv: CV;
   @Input() formGroup: FormGroup;
 
   constructor(private restClient: RestClientService,
