@@ -1,4 +1,4 @@
-# CVCreator - front (during the works)
+# CVCreator - front (in progress)
 
 The aim of the project is to create a cv wizard.
 
