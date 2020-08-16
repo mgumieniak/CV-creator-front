@@ -10,22 +10,8 @@ import {plainToClass} from 'class-transformer';
   styleUrls: ['./form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
   @Input() cv: CV;
+  @Input() modelForm: FormGroup;
   @Output() update: EventEmitter<CV> = new EventEmitter();
-
-  modelForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
-  }
-
-  ngOnInit() {
-    this.modelForm = this.formBuilder.group({
-      firstname: [this.cv.personalDetails.get('firstname'), Validators.required],
-      lastname: [this.cv.personalDetails.get('lastname'), [Validators.required]],
-      additionDetails: this.formBuilder.array([]),
-      email: [this.cv.personalDetails.get('email'), [Validators.required, Validators.email]],
-      phone: [this.cv.personalDetails.get('phone'), [Validators.required]],
-    });
-  }
 }

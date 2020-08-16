@@ -64,8 +64,18 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
   updateGivenCV(form): void {
     const updatedCv = new CV();
     const personalDetails = new Map<string, string>();
+
+
     for (const value in form.value) {
-      personalDetails.set(value, form.value[value]);
+      if (value === 'additionDetails') {
+        const nestedMap = form.value.additionDetails.reduce((map, obj) => {
+          map.set(obj.description, obj.property);
+          return map;
+        }, new Map());
+        personalDetails.set(value, nestedMap);
+      } else {
+        personalDetails.set(value, form.value[value]);
+      }
     }
     updatedCv.id = this.cv.id;
     updatedCv.experience = this.cv.experience;
