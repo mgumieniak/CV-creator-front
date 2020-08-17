@@ -1,0 +1,15 @@
+.container form {
+  margin: 1em;
+}
+
+form > app-form-field, form > app-form-field,form mat-form-field, form button  {
+  margin-left: 10px;
+}
+/*{*/
+/*  margin-left: 10px;*/
+/*}*/
+
+.container .mat-form-field {
+  width: 250px;
+}
+

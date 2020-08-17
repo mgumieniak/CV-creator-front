@@ -1,63 +1,40 @@
-<form
-  class="model-form"
-  [formGroup]="formGroup"
-  (ngSubmit)="updateGivenCV(formGroup)"
->
-  <app-form-field
+<div class="container">
+  <form
     [formGroup]="formGroup"
-    title="Firstname"
-    formName="firstname">
-  </app-form-field>
-
-  <app-form-field
-    [formGroup]="formGroup"
-    title="Lastname"
-    formName="lastname">
-  </app-form-field>
-
-  <app-form-field
-    [formGroup]="formGroup"
-    title="Email"
-    [isValid]="isEmailValid()"
-    formName="email"
-    [errorMsg]="getEmailErrorMessage()">
-  </app-form-field>
-
-  <app-form-field
-    [formGroup]="formGroup"
-    title="Phon number"
-    formName="phone">
-  </app-form-field>
-
-  <button mat-stroked-button type="button" (click)="addAdditionDetails()">Add property</button>
-
-  <div formArrayName="additionDetails"
-       *ngFor="let _ of additionDetails.controls; let i = index"
+    (ngSubmit)="updateGivenCV(formGroup)"
   >
-    <div [formGroupName]="i">
-      <mat-form-field>
-        <mat-label>Description:</mat-label>
-        <input
-          matInput
-          formControlName="description"
-        />
-      </mat-form-field>
+    <app-form-field
+      [formGroup]="formGroup"
+      title="Firstname"
+      formName="firstname">
+    </app-form-field>
 
-      <mat-form-field>
-        <mat-label>Property:</mat-label>
-        <input
-          matInput
-          formControlName="property"
-        />
-      </mat-form-field>
+    <app-form-field
+      [formGroup]="formGroup"
+      title="Lastname"
+      formName="lastname">
+    </app-form-field>
 
-      <button mat-icon-button color="warn" (click)="removeAdditionDetails(i)">
-        <mat-icon>remove</mat-icon>
-      </button>
-    </div>
-  </div>
+    <app-form-field
+      [formGroup]="formGroup"
+      title="Email"
+      [isValid]="isEmailValid()"
+      formName="email"
+      [errorMsg]="getEmailErrorMessage()">
+    </app-form-field>
 
-  <button mat-stroked-button [disabled]="!formGroup.valid" type="submit">
-    Save
-  </button>
-</form>
+    <app-form-field
+      [formGroup]="formGroup"
+      title="Phon number"
+      formName="phone">
+    </app-form-field>
+
+    <app-dynamic-form-field [formGroup]="formGroup" formArrayName="additionDetails" key="Property:" value="Description:"
+    ></app-dynamic-form-field>
+
+    <button mat-stroked-button [disabled]="!formGroup.valid" type="submit">
+      Save
+    </button>
+  </form>
+</div>
+

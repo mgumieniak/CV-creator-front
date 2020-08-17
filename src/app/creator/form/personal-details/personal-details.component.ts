@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {CV} from '../../../model/data';
-import {classToPlain, plainToClass} from 'class-transformer';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -28,25 +27,6 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.valueChangesSub.unsubscribe();
-  }
-
-  buildPosition(): FormGroup {
-    return this.formBuilder.group({
-      description: '',
-      property: '',
-    });
-  }
-
-  addAdditionDetails(): void {
-    this.additionDetails.push(this.buildPosition());
-  }
-
-  removeAdditionDetails(i): void {
-    this.additionDetails.removeAt(i);
-  }
-
-  get additionDetails(): FormArray {
-    return this.formGroup.get('additionDetails') as FormArray;
   }
 
   getEmailErrorMessage() {

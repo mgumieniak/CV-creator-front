@@ -25,5 +25,4 @@ export class PersonalDetailsContainer {
       error: noop,
     });
   }
-
 }

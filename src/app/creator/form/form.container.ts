@@ -35,7 +35,7 @@ export class FormContainer implements OnInit {
   }
 
   private addAdditionDetails(): void {
-    this.cv.personalDetails.get('additionDetails').forEach((value, key, map) => {
+    this.cv.personalDetails.get('additionDetails').forEach((value, key) => {
       this.additionDetails.push(this.buildPosition(value, key));
     });
   }
