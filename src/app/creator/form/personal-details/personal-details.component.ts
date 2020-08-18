@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {CV} from '../../../model/data';
 import {Subscription} from 'rxjs';
 
@@ -14,7 +14,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
   @Input() cv: CV;
   @Output() update: EventEmitter<CV> = new EventEmitter<CV>();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor() {
   }
 
   private valueChangesSub: Subscription;
@@ -44,7 +44,6 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
   updateGivenCV(form): void {
     const updatedCv = new CV();
     const personalDetails = new Map<string, string>();
-
 
     for (const value in form.value) {
       if (value === 'additionDetails') {
