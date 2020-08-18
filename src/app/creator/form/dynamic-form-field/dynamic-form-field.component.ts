@@ -16,7 +16,7 @@ export class DynamicFormFieldComponent {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  get additionDetails(): FormArray {
+  get arrays(): FormArray {
     return this.formGroup.get(this.formArrayName) as FormArray;
   }
 
@@ -28,10 +28,10 @@ export class DynamicFormFieldComponent {
   }
 
   addAdditionDetails(): void {
-    this.additionDetails.push(this.buildPosition());
+    this.arrays.push(this.buildPosition());
   }
 
   removeAdditionDetails(i): void {
-    this.additionDetails.removeAt(i);
+    this.arrays.removeAt(i);
   }
 }
