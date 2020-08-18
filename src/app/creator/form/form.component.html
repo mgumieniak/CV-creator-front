@@ -1,6 +1,23 @@
-<app-personal-details
-  [formGroup]="modelForm"
-  [cv]="cv"></app-personal-details>
 
-<p>Model form: </p>
-<pre>{{ modelForm.value | json }}</pre>
+
+<mat-tab-group>
+  <mat-tab label="First">
+    <ng-template matTabContent>
+      <app-personal-details
+        [cv]="cv"></app-personal-details>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Second">
+    <ng-template matTabContent>
+      Content 2 - Loaded
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Third">
+    <ng-template matTabContent>
+      Content 3 - Loaded
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+
+<!--<p>Model form: </p>-->
+<!--<pre>{{ modelForm.value | json }}</pre>-->

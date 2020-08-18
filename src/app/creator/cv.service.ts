@@ -23,8 +23,6 @@ export class CvService {
   }
 
   public updateGivenCv(cv: CV): void {
-    console.log('Inside update:');
-    console.log(cv);
     this.cvUpdate.next(cv);
   }
 

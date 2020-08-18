@@ -2,6 +2,9 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnIn
 import {FormGroup} from '@angular/forms';
 import {CV} from '../../../model/data';
 import {Subscription} from 'rxjs';
+import {ADDITION_DETAILS, EMAIL, FIRSTNAME, LASTNAME, PHONE} from './personal-details.container';
+
+
 
 @Component({
   selector: 'app-personal-details-ui',
@@ -13,6 +16,12 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
   @Input() formGroup: FormGroup;
   @Input() cv: CV;
   @Output() update: EventEmitter<CV> = new EventEmitter<CV>();
+
+  readonly EMAIL = EMAIL;
+  readonly FIRSTNAME = FIRSTNAME;
+  readonly LASTNAME = LASTNAME;
+  readonly PHONE = PHONE;
+  readonly ADDITION_DETAILS = ADDITION_DETAILS;
 
   constructor() {
   }
@@ -30,15 +39,15 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
   }
 
   getEmailErrorMessage() {
-    if (this.formGroup.get('email').hasError('required')) {
+    if (this.formGroup.get(EMAIL).hasError('required')) {
       return 'You must enter a value';
     }
 
-    return this.formGroup.get('email').hasError('email') ? 'Not a valid email' : '';
+    return this.formGroup.get(EMAIL).hasError(EMAIL) ? 'Not a valid email' : '';
   }
 
   isEmailValid() {
-    return this.formGroup.get('email').invalid;
+    return this.formGroup.get(EMAIL).invalid;
   }
 
   updateGivenCV(form): void {
@@ -46,7 +55,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
     const personalDetails = new Map<string, string>();
 
     for (const value in form.value) {
-      if (value === 'additionDetails') {
+      if (value === ADDITION_DETAILS) {
         const nestedMap = form.value.additionDetails.reduce((map, obj) => {
           map.set(obj.description, obj.property);
           return map;
@@ -62,5 +71,6 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
 
     this.update.emit(updatedCv);
   }
+
 
 }

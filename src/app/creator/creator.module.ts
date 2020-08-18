@@ -13,10 +13,14 @@ import {FormFieldComponent} from './form/form-field/form-field.component';
 import {PersonalDetailsComponent} from './form/personal-details/personal-details.component';
 import {PersonalDetailsContainer} from './form/personal-details/personal-details.container';
 import {CreatorContainer} from './creator.container';
-import { DynamicFormFieldComponent } from './form/dynamic-form-field/dynamic-form-field.component';
+import {DynamicFormFieldComponent} from './form/dynamic-form-field/dynamic-form-field.component';
+import {ExperienceComponent} from './form/experience/experience.component';
+import {ExperienceContainer} from './form/experience/experience.container';
 
 @NgModule({
-  declarations: [CreatorComponent, FormComponent, PreviewComponent, FormContainer, PreviewContainer, FormFieldComponent, PersonalDetailsComponent, PersonalDetailsContainer, CreatorContainer, DynamicFormFieldComponent],
+  declarations: [CreatorComponent, FormComponent, PreviewComponent, FormContainer, PreviewContainer, FormFieldComponent,
+    PersonalDetailsComponent, PersonalDetailsContainer, CreatorContainer, DynamicFormFieldComponent, ExperienceComponent,
+    ExperienceContainer],
   imports: [CommonModule, CreatorRoutingModule, MaterialModule, ReactiveFormsModule, FormsModule],
 })
 export class CreatorModule {

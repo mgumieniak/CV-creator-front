@@ -12,6 +12,6 @@ import {plainToClass} from 'class-transformer';
 })
 export class FormComponent {
   @Input() cv: CV;
-  @Input() modelForm: FormGroup;
-  @Output() update: EventEmitter<CV> = new EventEmitter();
+  // @Input() modelForm: FormGroup;
+  // @Output() update: EventEmitter<CV> = new EventEmitter();
 }

@@ -6,30 +6,31 @@
     <app-form-field
       [formGroup]="formGroup"
       title="Firstname"
-      formName="firstname">
+      [formName]="FIRSTNAME">
     </app-form-field>
 
     <app-form-field
       [formGroup]="formGroup"
       title="Lastname"
-      formName="lastname">
+      [formName]="LASTNAME">
     </app-form-field>
 
     <app-form-field
       [formGroup]="formGroup"
       title="Email"
       [isValid]="isEmailValid()"
-      formName="email"
+      [formName]="EMAIL"
       [errorMsg]="getEmailErrorMessage()">
     </app-form-field>
 
     <app-form-field
       [formGroup]="formGroup"
       title="Phon number"
-      formName="phone">
+      [formName]="PHONE">
     </app-form-field>
 
-    <app-dynamic-form-field [formGroup]="formGroup" formArrayName="additionDetails" key="Property:" value="Description:"
+    <app-dynamic-form-field [formGroup]="formGroup" [formArrayName]="ADDITION_DETAILS" key="Property:"
+                            value="Description:"
     ></app-dynamic-form-field>
 
     <button mat-stroked-button [disabled]="!formGroup.valid" type="submit">

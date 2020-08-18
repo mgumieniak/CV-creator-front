@@ -3,7 +3,13 @@ import {RestClientService} from '../../../model/rest-client.service';
 import {CvService} from '../../cv.service';
 import {noop} from 'rxjs';
 import {CV} from '../../../model/data';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+export const FIRSTNAME = 'firstname';
+export const LASTNAME = 'lastname';
+export const EMAIL = 'email';
+export const PHONE = 'phone';
+export const ADDITION_DETAILS = 'additionDetails';
 
 @Component({
   selector: 'app-personal-details',
@@ -11,17 +17,47 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./personal-details.container.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PersonalDetailsContainer {
+export class PersonalDetailsContainer implements OnInit {
   @Input() cv: CV;
-  @Input() formGroup: FormGroup;
 
   constructor(private restClient: RestClientService,
-              private cvService: CvService) {
+              private cvService: CvService,
+              private formBuilder: FormBuilder) {
+  }
+
+  personalDetailsForm: FormGroup;
+
+  ngOnInit() {
+    this.personalDetailsForm = this.formBuilder.group({
+      firstname: [this.cv.personalDetails.get(FIRSTNAME), Validators.required],
+      lastname: [this.cv.personalDetails.get(LASTNAME), [Validators.required]],
+      additionDetails: this.formBuilder.array([]),
+      email: [this.cv.personalDetails.get(EMAIL), [Validators.required, Validators.email]],
+      phone: [this.cv.personalDetails.get(PHONE), [Validators.required]],
+    });
+    this.addAdditionDetails();
+  }
+
+  private addAdditionDetails(): void {
+    this.cv.personalDetails.get(ADDITION_DETAILS).forEach((value, key) => {
+      this.additionDetails.push(this.buildPosition(value, key));
+    });
+  }
+
+  private get additionDetails(): FormArray {
+    return this.personalDetailsForm.get(ADDITION_DETAILS) as FormArray;
+  }
+
+  private buildPosition(value: string, key: string): FormGroup {
+    return this.formBuilder.group({
+      description: key,
+      property: value,
+    });
   }
 
   update(cv: CV): void {
     this.restClient.update(cv).subscribe({
-      next: (cv) => this.cvService.updateGivenCv(cv),
+      next: (updatedCv) => this.cvService.updateGivenCv(updatedCv),
       error: noop,
     });
   }
