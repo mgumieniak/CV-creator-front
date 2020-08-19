@@ -5,7 +5,6 @@ import {Subscription} from 'rxjs';
 import {ADDITION_DETAILS, EMAIL, FIRSTNAME, LASTNAME, PHONE} from './personal-details.container';
 
 
-
 @Component({
   selector: 'app-personal-details-ui',
   templateUrl: './personal-details.component.html',
@@ -46,6 +45,13 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
     return this.formGroup.get(EMAIL).hasError(EMAIL) ? 'Not a valid email' : '';
   }
 
+  get dynamicObject() {
+    return {
+      description: '',
+      property: '',
+    };
+  }
+
   isEmailValid() {
     return this.formGroup.get(EMAIL).invalid;
   }
@@ -66,7 +72,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
       }
     }
     updatedCv.id = this.cv.id;
-    updatedCv.experience = this.cv.experience;
+    updatedCv.experiences = this.cv.experiences;
     updatedCv.personalDetails = personalDetails;
 
     this.update.emit(updatedCv);

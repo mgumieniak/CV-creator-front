@@ -3,26 +3,23 @@
   <div [formArrayName]="formArrayName"
        *ngFor="let _ of arrays.controls; let i = index"
   >
-    <div [formGroupName]="i">
-      <mat-form-field appearance="fill">
-        <mat-label>{{key}}</mat-label>
-        <input
-          matInput
-          formControlName=description
-        />
-      </mat-form-field>
+    <div [formGroupName]="i" >
+      <div class="flex_container">
+        <div *ngFor="let controlName of controlsName()">
+          <mat-form-field appearance="fill">
+            <mat-label>{{controlName}}</mat-label>
+            <input
+              matInput
+              [formControlName]=controlName
+            />
+          </mat-form-field>
+        </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>{{value}}</mat-label>
-        <input
-          matInput
-          formControlName=property
-        />
-      </mat-form-field>
+        <button mat-icon-button color="warn" (click)="removeAdditionDetails(i)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
 
-      <button mat-icon-button color="warn" (click)="removeAdditionDetails(i)">
-        <mat-icon>remove</mat-icon>
-      </button>
     </div>
   </div>
 

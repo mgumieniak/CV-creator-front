@@ -1,15 +1,15 @@
 
 
 <mat-tab-group>
-  <mat-tab label="First">
+  <mat-tab label="Personal Details">
     <ng-template matTabContent>
       <app-personal-details
         [cv]="cv"></app-personal-details>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Second">
+  <mat-tab label="Experience">
     <ng-template matTabContent>
-      Content 2 - Loaded
+      <app-experience [cv]="cv"></app-experience>
     </ng-template>
   </mat-tab>
   <mat-tab label="Third">

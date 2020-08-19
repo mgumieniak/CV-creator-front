@@ -10,8 +10,7 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 export class DynamicFormFieldComponent {
   @Input() formGroup: FormGroup;
   @Input() formArrayName: string;
-  @Input() key: string;
-  @Input() value: string;
+  @Input() controlsConfig: object;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -20,15 +19,16 @@ export class DynamicFormFieldComponent {
     return this.formGroup.get(this.formArrayName) as FormArray;
   }
 
-  buildPosition(): FormGroup {
-    return this.formBuilder.group({
-      description: '',
-      property: '',
-    });
-  }
-
   addAdditionDetails(): void {
     this.arrays.push(this.buildPosition());
+  }
+
+  buildPosition(): FormGroup {
+    return this.formBuilder.group(this.controlsConfig);
+  }
+
+  controlsName(): string[] {
+    return Object.keys(this.controlsConfig);
   }
 
   removeAdditionDetails(i): void {
