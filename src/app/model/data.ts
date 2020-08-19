@@ -1,7 +1,7 @@
 export class CV {
   id: string;
   personalDetails: Map<string, any>;
-  experience: Map<string, string>;
+  experiences: Experience[];
 
   constructor() {
   }
@@ -11,8 +11,18 @@ export class CV {
     cv.id = data.id;
     cv.personalDetails = new Map<string, any>(Object.entries(data.personalDetails));
     cv.personalDetails.set('additionDetails', new Map(Object.entries(cv.personalDetails.get('additionDetails'))));
-    cv.experience = new Map<string, any>(Object.entries(data.experience));
+    cv.experiences = data.experiences.map(experience => {
+      return experience as Experience;
+    });
     return cv;
   }
 }
 
+
+export interface Experience {
+  company: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+}

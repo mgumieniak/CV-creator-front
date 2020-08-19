@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import {CV} from './data';
-import {classToPlain, plainToClass} from 'class-transformer';
+import {classToPlain} from 'class-transformer';
 
 
 @Injectable({
@@ -25,8 +25,11 @@ export class RestClientService {
     return this.http
       .get<CV>(this.baseUrl + `/cvs/1`)
       .pipe(
-        map((data)=> CV.convert(data)),
-        tap((cv) =>  {console.log('GET data:');console.log(cv)}),
+        map((data) => CV.convert(data)),
+        tap((cv) => {
+          console.log('GET data:');
+          console.log(cv);
+        }),
         catchError(this.handleError<CV>('getCV')));
   }
 
@@ -34,8 +37,11 @@ export class RestClientService {
     return this.http
       .put<CV>(this.baseUrl + '/cvs/1', classToPlain(cv))
       .pipe(
-        map((data)=> CV.convert(data)),
-        tap((cv) => {console.log('PUT data:');console.log(cv)}),
+        map((data) => CV.convert(data)),
+        tap((cv) => {
+          console.log('PUT data:');
+          console.log(cv);
+        }),
         catchError(this.handleError<CV>('Update CV'))
       );
   }
