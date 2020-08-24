@@ -1,0 +1,14 @@
+.horizontal-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-container{
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field, mat-checkbox {
+  margin-left: 10px;
+  width: 250px;
+}
