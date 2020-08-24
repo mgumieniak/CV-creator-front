@@ -16,12 +16,21 @@ import {CreatorContainer} from './creator.container';
 import {DynamicFormFieldComponent} from './form/dynamic-form-field/dynamic-form-field.component';
 import {ExperienceComponent} from './form/experience/experience.component';
 import {ExperienceContainer} from './form/experience/experience.container';
+import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {CustomDateAdapter} from '../dateAdapter/custom-date-adapter';
+import { DateRangePickerComponent } from './form/date-range-picker/date-range-picker.component';
 
 @NgModule({
   declarations: [CreatorComponent, FormComponent, PreviewComponent, FormContainer, PreviewContainer, FormFieldComponent,
     PersonalDetailsComponent, PersonalDetailsContainer, CreatorContainer, DynamicFormFieldComponent, ExperienceComponent,
-    ExperienceContainer],
-  imports: [CommonModule, CreatorRoutingModule, MaterialModule, ReactiveFormsModule, FormsModule],
+    ExperienceContainer,
+    DateRangePickerComponent],
+  imports: [CommonModule, CreatorRoutingModule, MaterialModule, ReactiveFormsModule, FormsModule, MatDatepickerModule,
+    MatNativeDateModule],
+  providers: [
+    MatDatepickerModule,
+    {provide: DateAdapter, useClass: CustomDateAdapter},
+  ]
 })
 export class CreatorModule {
 }

@@ -1,1 +1,51 @@
-<p>experience works!</p>
+<div class="container">
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="updateGivenCV(formGroup)"
+  >
+    <button mat-stroked-button type="button" (click)="addAdditionDetails()">Add property</button>
+    <div [formArrayName]="EXPERIENCE"
+         *ngFor="let _ of arrays.controls; let i = index"
+    >
+      <div [formGroupName]="i">
+        <mat-form-field appearance="fill">
+          <mat-label>Company:</mat-label>
+          <input
+            matInput
+            [formControlName]="COMPANY"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Position:</mat-label>
+          <input
+            matInput
+            [formControlName]="POSITION"
+          />
+        </mat-form-field>
+
+        <app-date-range-picker [dateRangePicker]="formGroup" [dateIndex]="i"
+                               [formName]="EXPERIENCE" [formNameStartDate]="START_DATE" [formNameEndDate]="END_DATE">
+        </app-date-range-picker>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description:</mat-label>
+          <input
+            matInput
+            [formControlName]="DESCRIPTION"
+          />
+        </mat-form-field>
+
+        <button mat-icon-button color="warn" (click)="removeAdditionDetails(i)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <button mat-stroked-button [disabled]="!formGroup.valid" type="submit">
+      Save
+    </button>
+  </form>
+</div>
+
+

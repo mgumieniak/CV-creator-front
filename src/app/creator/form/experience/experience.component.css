@@ -1,0 +1,9 @@
+mat-form-field, button{
+  margin-top: 1em;
+  margin-left: 10px;
+}
+
+mat-form-field {
+  margin-top: 1em;
+  width: 250px;
+}
