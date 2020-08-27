@@ -17,23 +17,15 @@ export class DateRangePickerComponent {
   @Input() formNameStartDate: string;
   @Input() formNameEndDate: string;
   isVisible = true;
-  date: any;
 
-  constructor(private datePipe: DatePipe) {
+  constructor() {
   }
 
   setAll(checked: boolean) {
-    const dateField = this.dateRangePicker.get(this.formName).value[this.dateIndex];
-    dateField.startDate = this.convertDate(dateField.startDate);
-    dateField.endDate = this.convertDate(dateField.endDate);
-
-    console.log(dateField.startDate);
-    console.log('Value: ' + checked);
+    const date = new Date();
+    date.setUTCHours(0, 0, 0, 0);
+    this.dateRangePicker.get(this.formName).controls[this.dateIndex].patchValue({endDate: date.toISOString()});
     this.isVisible = !checked;
-  }
-
-  private convertDate(date: string): string {
-    return this.datePipe.transform(date, DATE_FORMAT);
   }
 
   getClasses() {

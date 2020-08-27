@@ -13,7 +13,7 @@
         <div *ngIf="isVisible">
           <mat-form-field appearance="fill">
             <mat-label>Choose a end date:</mat-label>
-            <input matInput [matDatepicker]="endDate"placeholder="Choose a date"
+            <input matInput [matDatepicker]="endDate" placeholder="Choose a date"
                    [formControlName]=formNameEndDate>
             <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
