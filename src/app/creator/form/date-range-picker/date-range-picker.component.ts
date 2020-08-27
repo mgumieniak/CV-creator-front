@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 
 const DATE_FORMAT = 'dd-MM-yyyy';
@@ -24,7 +24,8 @@ export class DateRangePickerComponent {
   setAll(checked: boolean) {
     const date = new Date();
     date.setUTCHours(0, 0, 0, 0);
-    this.dateRangePicker.get(this.formName).controls[this.dateIndex].patchValue({endDate: date.toISOString()});
+    const forms = this.dateRangePicker.get(this.formName) as FormArray;
+    forms.controls[this.dateIndex].patchValue({endDate: date.toISOString()});
     this.isVisible = !checked;
   }
 
