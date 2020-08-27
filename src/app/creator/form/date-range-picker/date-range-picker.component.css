@@ -6,6 +6,11 @@
 .vertical-container{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.vertical-item{
+  text-align: center;
 }
 
 mat-form-field, mat-checkbox {

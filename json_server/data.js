@@ -15,15 +15,15 @@ module.exports = function () {
         {
           company: "Comarch",
           position: "Junior Java Developer",
-          startDate: "01.07.2019",
-          endDate: "05.07.2019",
+          startDate: "2020-08-04T22:00:00.000Z",
+          endDate: "2020-08-06T22:00:00.000Z",
           description: "Nie no tragedia",
         },
         {
           company: "Comarch2",
           position: "Junior Java Developer2",
-          startDate: "05.07.2019",
-          endDate: "",
+          startDate: "2020-08-18T22:00:00.000Z",
+          endDate: "2020-08-20T22:00:00.000Z",
           description: "Nie no tragedia2",
         },
       ]

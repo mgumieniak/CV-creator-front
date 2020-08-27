@@ -7,7 +7,7 @@
     <div [formArrayName]="EXPERIENCE"
          *ngFor="let _ of arrays.controls; let i = index"
     >
-      <div [formGroupName]="i">
+      <div [formGroupName]="i" class="flex_container">
         <mat-form-field appearance="fill">
           <mat-label>Company:</mat-label>
           <input

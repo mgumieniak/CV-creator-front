@@ -13,13 +13,14 @@
         <div *ngIf="isVisible">
           <mat-form-field appearance="fill">
             <mat-label>Choose a end date:</mat-label>
-            <input matInput [matDatepicker]="endDate" placeholder="Choose a date" [formControlName]=formNameEndDate>
+            <input matInput [matDatepicker]="endDate"placeholder="Choose a date"
+                   [formControlName]=formNameEndDate>
             <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
           </mat-form-field>
         </div>
 
-        <mat-checkbox (change)="setAll($event.checked)">
+        <mat-checkbox (change)="setAll($event.checked)" [ngClass]="getClasses()">
           To present
         </mat-checkbox>
       </div>

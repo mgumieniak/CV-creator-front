@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import {CreatorRoutingModule} from './creator-routing.module';
 import {CreatorComponent} from './creator.component';
@@ -16,9 +16,21 @@ import {CreatorContainer} from './creator.container';
 import {DynamicFormFieldComponent} from './form/dynamic-form-field/dynamic-form-field.component';
 import {ExperienceComponent} from './form/experience/experience.component';
 import {ExperienceContainer} from './form/experience/experience.container';
-import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {DateAdapter, MAT_DATE_FORMATS, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {CustomDateAdapter} from '../dateAdapter/custom-date-adapter';
-import { DateRangePickerComponent } from './form/date-range-picker/date-range-picker.component';
+import {DateRangePickerComponent} from './form/date-range-picker/date-range-picker.component';
+
+const APP_DATE_FORMATS = {
+  parse: {
+    dateInput: {month: 'short', year: 'numeric', day: 'numeric'},
+  },
+  display: {
+    dateInput: 'input',
+    monthYearLabel: {year: 'numeric', month: 'numeric'},
+    dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+    monthYearA11yLabel: {year: 'numeric', month: 'long'},
+  }
+};
 
 @NgModule({
   declarations: [CreatorComponent, FormComponent, PreviewComponent, FormContainer, PreviewContainer, FormFieldComponent,
@@ -28,9 +40,13 @@ import { DateRangePickerComponent } from './form/date-range-picker/date-range-pi
   imports: [CommonModule, CreatorRoutingModule, MaterialModule, ReactiveFormsModule, FormsModule, MatDatepickerModule,
     MatNativeDateModule],
   providers: [
+    DatePipe,
     MatDatepickerModule,
     {provide: DateAdapter, useClass: CustomDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
   ]
 })
+
+
 export class CreatorModule {
 }
