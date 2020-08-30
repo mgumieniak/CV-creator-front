@@ -2,6 +2,7 @@ export class CV {
   id: string;
   personalDetails: Map<string, any>;
   experiences: Experience[];
+  skillToRating: Map<string, number>;
 
   constructor() {
   }
@@ -14,6 +15,7 @@ export class CV {
     cv.experiences = data.experiences.map(experience => {
       return experience as Experience;
     });
+    cv.skillToRating = new Map<string, number>(Object.entries(data.skillToRating));
     return cv;
   }
 }

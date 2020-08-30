@@ -74,6 +74,7 @@ export class PersonalDetailsComponent implements OnInit, OnDestroy {
     updatedCv.id = this.cv.id;
     updatedCv.experiences = this.cv.experiences;
     updatedCv.personalDetails = personalDetails;
+    updatedCv.skillToRating = this.cv.skillToRating;
 
     this.update.emit(updatedCv);
   }

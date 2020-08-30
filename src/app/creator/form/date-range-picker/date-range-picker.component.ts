@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormArray, FormGroup} from '@angular/forms';
-import {DatePipe} from '@angular/common';
 
 const DATE_FORMAT = 'dd-MM-yyyy';
 

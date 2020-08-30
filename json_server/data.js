@@ -26,7 +26,12 @@ module.exports = function () {
           endDate: "2020-08-20T22:00:00.000Z",
           description: "Nie no tragedia2",
         },
-      ]
+      ],
+      skillToRating: {
+        java : 4,
+        angular: 4,
+        SQL : 3,
+      }
     }]
   };
 };

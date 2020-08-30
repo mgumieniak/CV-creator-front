@@ -1,0 +1,14 @@
+<div class="container">
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="updateGivenCV(formGroup)"
+  >
+
+    <app-dynamic-star-rating [formGroup]="formGroup" [formArrayName]="RATINGS"
+                            [controlsConfig]="dynamicObject"
+    ></app-dynamic-star-rating>
+
+
+  </form>
+</div>
+

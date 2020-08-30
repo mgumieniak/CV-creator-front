@@ -67,9 +67,9 @@ export class ExperienceComponent implements OnInit, OnDestroy, OnChanges {
     updatedCv.id = this.cv.id;
     updatedCv.personalDetails = this.cv.personalDetails;
     updatedCv.experiences = form.value.experience;
+    updatedCv.skillToRating = this.cv.skillToRating;
     this.update.emit(updatedCv);
   }
-
 
 
   ngOnChanges(changes: SimpleChanges): void {
