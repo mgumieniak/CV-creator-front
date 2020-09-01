@@ -19,11 +19,10 @@ import {ExperienceContainer} from './form/experience/experience.container';
 import {DateAdapter, MAT_DATE_FORMATS, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {CustomDateAdapter} from '../dateAdapter/custom-date-adapter';
 import {DateRangePickerComponent} from './form/date-range-picker/date-range-picker.component';
-import { RatingComponent } from './form/rating/rating.component';
-import { StarRatingComponent } from './form/star-rating/star-rating.component';
-import { RatingContainer } from './form/rating/rating.container';
-import { DynamicStarRatingComponent } from './form/dynamic-star-rating/dynamic-star-rating.component';
-import { StarRatingContainer } from './form/star-rating/star-rating.container';
+import {RatingComponent} from './form/rating/rating.component';
+import {RatingContainer} from './form/rating/rating.container';
+import {DynamicStarRatingComponent} from './form/dynamic-star-rating/dynamic-star-rating.component';
+import {StarRatingComponent} from './form/star-rating/star-rating.component';
 
 const APP_DATE_FORMATS = {
   parse: {
@@ -43,10 +42,9 @@ const APP_DATE_FORMATS = {
     ExperienceContainer,
     DateRangePickerComponent,
     RatingComponent,
-    StarRatingComponent,
     RatingContainer,
     DynamicStarRatingComponent,
-    StarRatingContainer],
+    StarRatingComponent],
   imports: [CommonModule, CreatorRoutingModule, MaterialModule, ReactiveFormsModule, FormsModule, MatDatepickerModule,
     MatNativeDateModule],
   providers: [

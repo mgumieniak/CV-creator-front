@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-star-rating',
   templateUrl: './dynamic-star-rating.component.html',
   styleUrls: ['./dynamic-star-rating.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicStarRatingComponent {
 
@@ -25,15 +25,19 @@ export class DynamicStarRatingComponent {
   }
 
   buildPosition(): FormGroup {
-    return this.formBuilder.group(this.controlsConfig);
+    return this.formBuilder.group({
+      value: [{description: '', property: 1}]
+    });
   }
 
-  controlsName(): string[] {
-    return Object.keys(this.controlsConfig);
-  }
 
   removeAdditionDetails(i): void {
     this.arrays.removeAt(i);
+  }
+
+  getFormControl(i: number): FormControl {
+    const forms = this.formGroup.get(this.formArrayName) as FormArray;
+    return forms.controls[i].get('value') as FormControl;
   }
 
 }

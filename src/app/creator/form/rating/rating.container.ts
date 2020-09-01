@@ -39,11 +39,9 @@ export class RatingContainer implements OnInit {
 
   private buildRate(skill: string, rate: number): FormGroup {
     return this.formBuilder.group({
-      description: skill,
-      property: rate,
+      value: [{description: skill, property: rate}]
     });
   }
-
 
   private get ratings(): FormArray {
     return this.ratingForm.get(RATINGS) as FormArray;

@@ -3,7 +3,6 @@ import {RATINGS} from './rating.container';
 import {FormGroup} from '@angular/forms';
 import {CV} from '../../../model/data';
 import {Subscription} from 'rxjs';
-import {MatFormFieldControl} from '@angular/material';
 
 @Component({
   selector: 'app-rating-ui',
@@ -38,7 +37,7 @@ export class RatingComponent implements OnInit, OnDestroy {
     updatedCv.id = this.cv.id;
     updatedCv.personalDetails = this.cv.personalDetails;
     updatedCv.experiences = this.cv.experiences;
-    updatedCv.skillToRating = form.value.ratings.reduce((map, obj) => {
+    updatedCv.skillToRating = form.value.ratings.map(item => item.value).reduce((map, obj) => {
       map.set(obj.description, obj.property);
       return map;
     }, new Map());
@@ -49,8 +48,7 @@ export class RatingComponent implements OnInit, OnDestroy {
   get dynamicObject() {
     return {
       description: '',
-      property: '',
+      property: 1,
     };
   }
-
 }

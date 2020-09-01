@@ -4,22 +4,12 @@
        *ngFor="let _ of arrays.controls; let i = index"
   >
     <div [formGroupName]="i">
-      <mat-form-field appearance="fill">
-        <mat-label>DESCRIPTION:</mat-label>
-        <input
-          matInput
-          formControlName="description"
-        />
-      </mat-form-field>
-
       <mat-form-field>
-        <app-star-rating formControlName="property"></app-star-rating>
+        <app-star-rating [formControl]="getFormControl(i)"></app-star-rating>
       </mat-form-field>
-
       <button mat-icon-button color="warn" (click)="removeAdditionDetails(i)">
         <mat-icon>remove</mat-icon>
       </button>
-
     </div>
   </div>
 </div>

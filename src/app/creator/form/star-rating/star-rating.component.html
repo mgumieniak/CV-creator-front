@@ -1,3 +1,14 @@
+<div [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>DESCRIPTION:</mat-label>
+    <input
+      matInput
+      formControlName=description
+    />
+  </mat-form-field>
+</div>
+
+
 <button mat-icon-button color="accent" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)">
   <mat-icon>
     {{showIcon(i)}}
